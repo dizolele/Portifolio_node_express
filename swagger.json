@@ -1,0 +1,197 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Um pequeno portifolio dos meus projetos de programação",
+    "version": "1.0.0",
+    "title": "Portifolio",
+    "contact": {
+      "email": "dizolele.pedro@gmail.com"
+    }
+  },
+  "host": "localhost:300",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "portifolio",
+      "description": "Tudo sobre o portifolio"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/portifolios": {
+      "get": {
+        "tags": [
+          "portifolio"
+        ],
+        "summary": "Listar todos os portifolios",
+        "description": "EndPoint responsável por listar todos os portifolios",
+        "operationId": "portifolios",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "retorna todo os projetos"
+          }
+        }
+      }
+    },
+    "/portifolio/{id}": {
+      "get": {
+        "tags": [
+          "portifolio"
+        ],
+        "summary": "Listar um único portifolio",
+        "description": "EndPoint responsável por listar um portifolio",
+        "operationId": "portifolio por id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "id do portifolio que será localizada"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna o Id localizado",
+            "schema": {
+              "$ref": "#/definitions/portifolio"
+            }
+          }
+        }
+      }
+    },
+    "/portifolio": {
+      "post": {
+        "tags": [
+          "portifolio"
+        ],
+        "summary": "Adicionar um novo portifolio",
+        "description": "EndPoint responsável para criar um portifolio",
+        "operationId": "portifolio",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Criando um portifolio",
+            "schema": {
+              "$ref": "#/definitions/portifolio"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Portifolio criado "
+          }
+        }
+      }
+    },
+    "/update/{id}": {
+      "put": {
+        "tags": [
+          "portifolio"
+        ],
+        "summary": "Atualizar o portifolio",
+        "description": "EndPoint responsável por atualizar o portifolio",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "id do portifolio que será atualizado"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Realizando a atualização do portifolio",
+            "schema": {
+              "$ref": "#/definitions/portifolio"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "portifolio atualizado com sucesso"
+          }
+        }
+      }
+    },
+    "/delete/{id}": {
+      "delete": {
+        "tags": [
+          "portifolio"
+        ],
+        "summary": "Deletar o portifolio",
+        "description": "EndPoint responsável por deletar o portifolio",
+        "operationId": "deletar Portifolio",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id do portifolio que será deletada"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Portifolio deletado do banco de dados"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "portifolio": {
+      "type": "object",
+      "required": [
+        "nome",
+        "link",
+        "descricao"
+      ],
+      "properties": {
+        "nome": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "descricao": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
